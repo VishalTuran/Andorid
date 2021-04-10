@@ -1,0 +1,27 @@
+xml:
+
+<ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOff="Off"
+        android:textOn="On"
+        android:id="@+id/tb"/>
+<Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Custom Toast"
+        android:id="@+id/btn"/>
+
+Java:
+Button btn1;
+ToggleButton tb;
+btn1=findViewById(R.id.btn);
+tb=findViewById(R.id.tb);
+
+btn1.setOnClickListener(new View.OnClickListener() {
+   @Override
+   public void onClick(View view) {
+         String str=tb.getText().toString();
+	Toast.makeText(getApplicationContext(),str.toString(),Toast.LENGTH_SHORT).show();
+}
+        });

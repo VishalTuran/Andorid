@@ -1,0 +1,38 @@
+public boolean isGPSEnabled()
+    {
+        LocationManager locationManager= (LocationManager) getSystemService(LOCATION_SERVICE);
+        boolean providerEnabled=locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+
+        if(providerEnabled)
+        {
+            return true;
+        }
+        else {
+            AlertDialog alertDialog=new AlertDialog.Builder(this)
+                    .setTitle("GPS Permissions")
+                    .setMessage("GPS is required for this app to work.Please Enable GPS.")
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            Intent intent=new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                            startActivityForResult(intent,156);
+                        }
+                    }).setCancelable(false).show();
+        }
+        return false;
+    }
+
+ @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==156 && resultCode==RESULT_OK && data!=null)
+        {
+            if(isGPSEnabled())
+            {
+                Toast.makeText(this, "GPS is Enabled", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                Toast.makeText(this, "Please enable GPS", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }

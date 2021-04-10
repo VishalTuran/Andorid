@@ -1,0 +1,14 @@
+onMapReady method add the following line of code:
+
+googleMap.setMyLocationEnabled(true);
+
+Then a button will appear on your map and on clicking the button it will lead the map to our current location.
+
+Advantage:
+
+1) Less Code
+
+
+Disadvantage:
+
+1) The GPS keeps running and it has massive effect on the battery of the device and we can't control the gps also.

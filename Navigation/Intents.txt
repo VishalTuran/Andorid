@@ -1,0 +1,43 @@
+Intent is the wish to do something.
+
+In Android Intent is used to navigate between screens or Activities.
+
+Initialise an Intent object.
+
+Intent intent=new Intent(MainActivity.this,SecondActivity.class);
+
+Intent constructor take two argument.
+1)Context
+2)SecondActivity where we want to move.
+
+While moving from one Activity to other we can also pass the data.
+
+intent.putExtra("message","Hello");
+intent.putExtra("count",123);
+
+Using putExtra method of intent class we can send the data in key value pair.
+Where key is a String whereas value can be anything String,int,char etc.
+
+To actually move from one to other activity we have to use the below Code:
+
+startActivity(intent);
+
+Retreiving the data in the secondActivity:
+
+Here we use the bundle(used to store different datatypes when we send  data from one activity to other activity.) 
+
+Bundle extras=getIntent().getExtras();
+
+We must check wheather the Bundle object is not null otherwise it might create problem.
+
+if(extras!=null)
+{
+      String  message=extras.getString("message");
+	int count=extras.getInt("count"); 
+     Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
+}
+
+
+We should always know the key and datatypeof the data we will be retriving so that we can use the right method like getString or getInt for instance in the given example.
+
+

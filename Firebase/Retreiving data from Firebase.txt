@@ -1,0 +1,42 @@
+1) First we need to create the instance the FirebaseFirestore.
+
+ private FirebaseFirestore db=FirebaseFirestore.getInstance();
+
+
+2)Sending the data to firestore. 
+
+ 		db.collection("Journal")
+                        .document("First Thoughts")
+                        .get()
+                        .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                            @Override
+                            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                if (documentSnapshot.exists())
+                                {
+                                    String title=documentSnapshot.getString(KEY_TITLE);
+                                    String desc=documentSnapshot.getString(KEY_DESC);
+                                    recTitle.setText(title);
+                                    recDesc.setText(desc);
+                                }
+                                else
+                               Toast.makeText(MainActivity.this,"No Data Exists",Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(MainActivity.this,"Failed",Toast.LENGTH_SHORT).show();
+
+                            }
+                        });
+
+
+First we need to specify the name of the collection inside collection() method
+Then we need to pass the map in the set() method.
+Then we need to add the listener for both success and failure.
+
+A DocumentSnapshot contains data read from a document in your Cloud Firestore database.
+
+In the success listener we are getting the snapshot of the database.This snapshot can be used to retreive the data.
+
+First check if the snapshot exists or not.If its exists then it work just like an intent.

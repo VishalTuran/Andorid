@@ -1,0 +1,46 @@
+Our App theme is defined inside the Android Manifest File.
+
+The real app theme is present inside the styles.xml file inside values folder.
+
+Code for styles.xml:
+
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+</resources>
+
+Theme.AppCompat.Light.DarkActionBar: gives dark appbar and status bar but light background to the app.
+
+Theme.AppCompat.Light.NoActionBar: gives dark status bar and light background to app but there will be no AppBar.
+
+Theme.AppCompat.Light: gives light status bar,AppBar,background.
+
+Theme.AppCompat: make everything dark.
+
+---> Changing the color of Status Bar
+(For android version equal or greater than Lollipop.For version below the statusbar can't be changed)
+The Status bar depend on the colorPrimaryDark.
+Just change the that the StatusBar will automatically changes.
+Tip:Use 700 density color for statusbar.
+
+---> Changing the color of App Bar or Toolbar
+The AppBar bar depend on the colorPrimary.
+Just change the that the AppBar will automatically changes.
+
+Tip:Use 500 to 600 density color for toolbar.
+
+The Navigation Bar(Back,Home Button) should also have same color as toolbar that is colorPrimary.
+
+
+
+
+
+
+

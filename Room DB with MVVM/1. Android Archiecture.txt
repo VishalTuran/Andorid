@@ -1,0 +1,6 @@
+Android Architecture components are a collection of libraries that help you design robust, testable, and maintainable apps with more power over lifecycle management and data persistence.
+
+SubSet of Android Architecture which basically takes some input from the user(LiveData), save into the local database(Room) and show it on the screen(ViewModel).
+
+a. “Entity”
+The entity is just a POJO which is also going to be the table in the database. For example, you can create a POJO class and annotate it with the “@Entity” annotation. You can also identify which field is the primary key with “@PrimaryKey”.

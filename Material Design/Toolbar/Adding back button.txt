@@ -1,0 +1,10 @@
+Just below the setSupportActionBar(toolbar) add the below line of code.
+
+getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
+
+inside the onOptionsItemSelected method add:
+
+else if(id==android.R.id.home)
+{
+            finish();
+}

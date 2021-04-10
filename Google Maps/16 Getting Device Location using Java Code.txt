@@ -1,0 +1,23 @@
+FusedLocationProviderClient locationProviderClient;
+
+locationProviderClient= LocationServices.getFusedLocationProviderClient(this);
+
+private void gotoCurrentLocation() {
+        locationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
+            @Override
+            public void onComplete(@NonNull Task<Location> task) {
+                if(task.isSuccessful())
+                {
+                    Location location=task.getResult();
+                    gotoLocation(location.getLatitude(),location.getLongitude());
+                    MarkerOptions markerOptions=new MarkerOptions()
+                            .position(new LatLng(location.getLatitude(),location.getLongitude()));
+
+                    googleMap.addMarker(markerOptions);
+
+
+                }
+            }
+        });
+}
+

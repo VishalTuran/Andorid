@@ -1,0 +1,25 @@
+First of all we have to remove the Default Toolbar to before creating a new toolbar.
+
+In styles.xml:
+inside style tag change the parent attribute to:
+ <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+The above line will remove the toolbar.
+
+Adding toolbar to xml:
+
+<androidx.appcompat.widget.Toolbar
+        android:layout_height="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:id="@+id/toobar"
+        android:background="@color/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+</androidx.appcompat.widget.Toolbar>
+
+Java code:
+Toolbar toolbar;
+toolbar=findViewById(R.id.toobar);
+setSupportActionBar(toolbar);
+
+//setSupportActionBar is used to tell that it is the default toobar.

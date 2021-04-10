@@ -1,0 +1,49 @@
+AlertDialog usually comes handy when we want to have confirmation from user.
+
+It consists of three parts:
+1) content
+2) title
+3) action buttons
+
+SubClass of Dialog class.
+
+
+Methods:
+1)public AlertDialog.Builder setTitle(CharSequence)-This method is used to set the title of AlertDialog.
+
+2)public AlertDialog.Builder setMessage(CharSequence)-This method is used to set the message for AlertDialog.
+
+3)public AlertDialog.Builder setIcon(int)-This method is used to set the icon over AlertDialog.
+
+Java code:
+
+alertDialog=new AlertDialog.Builder(MainActivity.this);
+alertDialog.setTitle(R.string.title);
+alertDialog.setMessage(R.string.msg);
+
+alertDialog.setCancelable(false);
+//user will not be able to cancel the alertDialog
+alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() 
+{
+@Override
+public void onClick(DialogInterface dialogInterface, int i) {
+MainActivity.this.finish();
+ }
+});
+
+alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+@Override
+public void onClick(DialogInterface dialogInterface, int i) {
+dialogInterface.cancel();
+}
+});
+
+AlertDialog dialog=alertDialog.create();
+dialog.show();
+
+
+First we will use AlertDialog.Builder to build the different parts of the alertdialog such as title,msg,positive and negative button.
+
+After the above steps we make the actual AlertDialog using 'create' method.
+
+Finally show the AlertDialog using 'show' method.

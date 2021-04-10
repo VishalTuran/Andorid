@@ -1,0 +1,29 @@
+Whenever we setup google play services sdk some of the permissions are already defined inside in the  google play services manifest.
+
+android.permission.INTERNET- used by the api to download maps tile from google map servers.
+
+android.permission.ACCESS_NETWORK_STATE-Allows the API to check the connection status in order to determine whether the data can be downloaded.
+
+So whenever we build our project our app manifest file and gps manifest file both merges so we don't need to explictly add the above permissions.
+
+When working on user current location we need to add one of the following permissions.
+
+The permission you choose determines the accuracy of the location returned by the API. You only need to request one of the Android location permissions, depending on the level of accuracy you need
+
+android.permission.ACCESS_COARSE_LOCATION – Allows the API to use WiFi or mobile cell data (or both) to determine the device's location. The API returns the location with an accuracy approximately equivalent to a city block.
+
+
+android.permission.ACCESS_FINE_LOCATION – Allows the API to determine as precise a location as possible from the available location providers, including the Global Positioning System (GPS) as well as WiFi and mobile cell data.
+
+Google uses OpenGL ES version 2 for rendering maps on our devices.It's also present inside the gps manifest file.
+
+If you are using com.google.android.gms:play-services-maps:16.0.0 or below and your app is targeting API level 28 (Android 9.0) or above, you must include the following declaration within the <application> element of AndroidManifest.xml.
+
+  <uses-library
+      android:name="org.apache.http.legacy"
+      android:required="false" />
+
+This is handled for you if you are using com.google.android.gms:play-services-maps:16.1.0 and is not necessary if your app is targeting a lower API level.
+
+Then you also need to get the permission at runtime.
+

@@ -1,0 +1,37 @@
+customtoast.xml:
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/custom_toast_layout"
+    android:orientation="vertical"
+    android:background="#F14E23"
+    >
+
+    <ImageView
+        android:id="@+id/custom_toast_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="Hello world"
+        android:src="@drawable/kid"/>
+
+    <TextView
+        android:id="@+id/custom_toast_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="To"
+        android:text="Custom Toast" />
+</LinearLayout>
+
+java:
+LayoutInflater li = getLayoutInflater();  
+//Getting the View object as defined in the customtoast.xml file  
+View layout = li.inflate(R.layout.customtoast,(ViewGroup) findViewById(R.id.custom_toast_layout));  
+  
+//Creating the Toast object  
+Toast toast = new Toast(getApplicationContext());  
+toast.setDuration(Toast.LENGTH_SHORT);  
+toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);  
+toast.setView(layout);//setting the view of custom toast layout  
+toast.show();  

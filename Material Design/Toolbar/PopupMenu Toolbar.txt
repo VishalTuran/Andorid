@@ -1,0 +1,51 @@
+First create a menu type file inside res folder.
+i.e Right click on res folder enter file name and inside resource type select menu.
+
+menu_main.xml:
+
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Item 1"
+        android:id="@+id/item1_id"/>
+
+    <item android:title="Item 2"
+        android:id="@+id/item2_id"/>
+
+    <item android:title="Item 3"
+        android:id="@+id/item3_id"/>
+</menu>
+
+Java code:
+We have to overide two method.
+
+1)onCreateOptionsMenu(Menu menu)
+It inflate the menu.
+
+2)onOptionsItemSelected(@NonNull MenuItem item)
+It works only when the menu item is selected.
+
+ @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main,menu);
+        return true;
+    }
+
+ @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id=item.getItemId();
+//getting to know which menu item is selected.
+        if(id==R.id.item1_id)
+        {
+            Toast.makeText(this,"Item 1 Selected",Toast.LENGTH_SHORT).show();
+        }
+        else if(id==R.id.item2_id)
+        {
+            Toast.makeText(this,"Item 2 Selected",Toast.LENGTH_SHORT).show();
+        }
+        else if(id==R.id.item3_id)
+        {
+            Toast.makeText(this,"Item 3 Selected",Toast.LENGTH_SHORT).show();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+

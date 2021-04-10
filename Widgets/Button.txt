@@ -1,0 +1,13 @@
+Xml:
+<Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sum"
+        android:id="@+id/btn"/>
+
+Java:
+ btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+}
+}

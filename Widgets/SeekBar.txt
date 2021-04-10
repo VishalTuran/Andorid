@@ -1,0 +1,43 @@
+Xml:
+
+<SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="10"
+        android:layout_marginBottom="40dp"/>
+
+Here max value means that the seekBar can only contain max 10 value.
+
+Java:
+
+SeekBar seekBar;
+seekBar=findViewById(R.id.seekBar);
+
+seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                result.setTextColor(Color.GRAY);
+                result.setText("Pain level:"+seekBar.getProgress()+"/"+seekBar.getMax());
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                if(seekBar.getProgress()>=7)
+                {
+                    result.setTextColor(Color.RED);
+                }
+            }
+});
+
+
+onProgressChanged is active when we drag the seekbar.
+
+onStartTrackingTouch is active when we touch the seekBar for the first time.
+
+onStopTrackingTouch is active when we stopped our drag movement.

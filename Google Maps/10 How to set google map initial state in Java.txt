@@ -1,0 +1,28 @@
+@Override
+    public void onMapReady(GoogleMap googleMap) {
+        Toast.makeText(this, "Map is Ready", Toast.LENGTH_SHORT).show();
+        this.googleMap=googleMap;
+        gotoLocation(LPU_LAT,LPU_LNG);
+    }
+
+
+private void gotoLocation(double lat,double lng)
+    {
+        LatLng latLng=new LatLng(lat,lng);
+
+        CameraUpdate cameraUpdate= CameraUpdateFactory.newLatLng(latLng);
+
+        //to change zoom use CameraUpdateFactory.newLatLngZoom(latLng,zoom)
+
+        googleMap.animateCamera(cameraUpdate);
+        
+        googleMap.getUiSettings().setZoomControlsEnabled(false);
+
+
+        MarkerOptions markerOptions=new MarkerOptions()
+                .title("LPU")
+                .position(new LatLng(lat,lng));
+        googleMap.addMarker(markerOptions);
+        //Use animate camera we move from one position to another
+        //else use moveCamera when the position is the initial position.
+    }

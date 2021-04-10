@@ -1,0 +1,20 @@
+go to https://console.cloud.google.com/
+
+Create new Project.
+
+Click on Enable Api and Services.
+
+Click on Enable
+
+Then go to dashboard and click api.
+
+Then enable the geocoding api from the list of api showing below.
+
+GO to API from dashboard and then click on Google Maps Sdk and then click on the credentials tab
+
+create new credientials
+
+Click on Api Key.
+
+Copy the api key
+

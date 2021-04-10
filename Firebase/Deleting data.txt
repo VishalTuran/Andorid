@@ -1,0 +1,21 @@
+1) Create an instance of firestore.
+
+2)  		Map<String,Object> data=new HashMap<>();
+
+                 data.put(KEY,value);
+
+                 db.collection("collection_name")
+		.document("documnet_name")
+		.update(data,FieldValue.delete());
+
+		//OR:Second Method
+	
+		db.collection("collection_name")
+		.document("documnet_name").
+		update(KEY,FieldValue.delete());
+
+3) For deleting the whole data of a document.
+	db.collection("collection_name")
+		.document("documnet_name")
+		.delete()
+		

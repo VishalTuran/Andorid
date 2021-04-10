@@ -1,0 +1,12 @@
+Go to menu file.
+
+Add the following line of code.
+
+<item
+        android:title=""
+        android:id="@+id/search_id"
+        android:icon="@drawable/magnify"
+        app:showAsAction="always"
+/>
+
+app:showAsAction ensure that it is action not an item of popupmenu.

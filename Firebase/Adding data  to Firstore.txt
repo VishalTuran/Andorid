@@ -1,0 +1,33 @@
+1) First we need to create the instance the FirebaseFirestore.
+
+ private FirebaseFirestore db=FirebaseFirestore.getInstance();
+
+2) Using this object to create a Map(Key-value pair).This map will be passed to firestore.
+
+Map<String,Object> data=new HashMap<>();
+
+3)Put the key-value in the map.
+data.put(key,value);
+
+4)Sending the data to firestore. 
+
+ 		db.collection("Journal")
+                        .document("First Thoughts")
+                        .set(data)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText		(MainActivity.this,"Success",Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.d("onFailure:","Failed to Store Data because Of:"+e.toString());
+                            }
+                        });
+
+
+First we need to specify the name of the collection inside collection() method
+Then we need to pass the map in the set() method.
+Then we need to add the listener for both success and failure.

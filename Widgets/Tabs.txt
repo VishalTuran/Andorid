@@ -1,0 +1,115 @@
+First Add the TabLayout tag below the Toolbar tag in activity_main.xml
+
+<com.google.android.material.tabs.TabLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:id="@+id/tab_layout"
+        style="@style/CustomTabLayout"
+        android:layout_gravity="left"
+        android:background="@color/colorPrimary"
+        app:tabGravity="fill"
+        app:tabMode="fixed"
+/>
+
+style also specify some of the properties like textColor of tabs etc.
+
+Now add the ViewPager also because we need to change the fragment on scrolling horizantally and ViewPager does the same thing.
+
+<androidx.viewpager.widget.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/view_pager"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+>
+
+Now we need a ViewPager Adapter to be attached with the ViewPager.
+
+PagerAdapter Code:
+
+public class PagerAdapter extends FragmentPagerAdapter {
+    Context ctx;
+    int totalTabs;
+
+    public PagerAdapter(Context context,@NonNull FragmentManager fm, int behavior) {
+        //Context is the activity context on which ViewPager is working.
+        //Fragment Manager is used to make reference to fragments
+        //behaviour is just the total no. of tabs.
+        super(fm, behavior);
+        ctx=context;
+        this.totalTabs=behavior;
+    }
+
+    @NonNull
+    @Override
+    public Fragment getItem(int position) {
+        //getItem return fragments object for each Tabs using the position
+        switch (position)
+        {
+            case 0:
+                return new ImagesFragment();
+            case 1:
+                return new VideosFragment();
+            default:
+                return null;
+        }
+    }
+
+    @Override
+    public int getCount() {
+        //getCount is used to just count the total no. of tabs
+        return totalTabs;
+    }
+
+}
+
+Moving to MainActivity.java:
+
+This things need to be done:
+
+1)Initialise the Viewpager and TabLayout.
+
+2) Attach the viewPager Adapter with the viewPager.
+
+3) Add the listener to both ViewPager and TabLayout.
+
+So here we go,
+
+1) 
+	tabLayout=findViewById(R.id.tab_layout);
+        viewPager=findViewById(R.id.view_pager);
+
+        tabLayout.addTab(tabLayout.newTab().setText("Images"));
+        tabLayout.addTab(tabLayout.newTab().setText("Videos"));
+
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+
+
+2)	PagerAdapter pagerAdapter=new PagerAdapter(this,getSupportFragmentManager(),tabLayout.getTabCount());
+        viewPager.setAdapter(pagerAdapter);
+
+
+3)	viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
+        tabLayout.addOnTabSelectedListener(new TabLayout.BaseOnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+
+
+
+ 
+
+

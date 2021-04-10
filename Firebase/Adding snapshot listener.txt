@@ -1,0 +1,29 @@
+Since we are dealing with the real time database we should always be looking for the new data coming.
+
+In order to do the same we need to make a snapshotListener which keep listening for the data.
+
+db.collection("collection_name")
+	.document("documnet_name)
+	.addSnapshotListener(this,new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                if(e!=null)
+                {
+                    Toast.makeText(MainActivity.this,"Something went wrong!",Toast.LENGTH_SHORT).show();
+                }
+                if(documentSnapshot.exists() && documentSnapshot!=null)
+                {
+                    String title=documentSnapshot.getString(KEY_TITLE);
+                    String desc=documentSnapshot.getString(KEY_DESC);
+                    recTitle.setText(title);
+                    recDesc.setText(desc);
+                }
+            }
+        });
+
+this i.e Context is not add when addSnapshotListener come live we add it deliberately to make it sync with the activity.So when the stop its work or moves out of focus the listener should also stop listening to data.
+
+We need to do that because listening to the incoming data requires expensive resources.
+
+Here we have two parameter:first is DocumentSnapshot which is basically the snapshot of the data and other is Exception in case something went wrong.s
+	

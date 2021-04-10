@@ -1,0 +1,45 @@
+To get the data or result from second activity back to first Activity.
+
+First of change the method:
+
+startActivity(intent);
+	To
+startActivityForResult(intent,REQUEST_CODE);
+
+because now we are calling the secondActivity but we need something in return.
+
+request code is an integer no. that we can create that will specify which activity or message we are trying to catch.
+
+We will also override a method called onActivityResult() which is used to catch everything send back from SecondActivity.
+
+protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==REQUEST_CODE)
+        {
+            if(resultCode==RESULT_OK)
+            {
+                String result=data.getStringExtra("returnData");
+                Toast.makeText(MainActivity.this,result,Toast.LENGTH_SHORT).show();
+            }
+        }
+}
+
+This method will take three parameters.
+1)Request Code
+2)Result Code:   resultcode is going to tell us what kind of data we are expecting.
+3)Intent
+
+As we are the sending the request code through startActivityForResult method.
+So we can whether the request code that we are receiving from the second activity is same as we send it and also the result code is equal to RESULT_OK which means everything is right.
+
+In the Second Activity :
+
+Intent returnIntent=getIntent();
+returnIntent.putExtra("returnData","From Second Activity");
+setResult(RESULT_OK,returnIntent);
+finish();
+
+In the first line we are getting the intent using getIntent() method.
+Then in the nextline we are putting the value in the intent.
+The next line contain setResult method which contains the result code and the intent.
+finally we will finish the second Activity.

@@ -1,0 +1,46 @@
+We need to add a listener and callback that keeps listening for the updates.
+
+LocationCallback callback;
+
+callback=new LocationCallback(){
+            @Override
+            public void onLocationResult(LocationResult locationResult) {
+                if(locationResult==null)
+                {
+                    return;
+                }
+                else
+                {
+                    Location location=locationResult.getLastLocation();
+                    getLocationUpdates();
+
+                }
+            }
+        };
+
+
+void getLocationUpdates()
+    {
+        LocationRequest locationRequest=LocationRequest.create();
+
+        locationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
+// Priority defines the accuracy and battery usage.
+        locationRequest.setInterval(5000);
+//time after you get the updates
+        locationRequest.setFastestInterval(2000);
+//fastest update we can get
+//maintain the difference for the other operation that you want to perform.
+
+        locationProviderClient.requestLocationUpdates(locationRequest,callback, null);
+    }
+
+Stop Listening for the update when app is paused.
+
+@Override
+    protected void onPause() {
+        super.onPause();
+        if(callback!=null)
+        {
+            locationProviderClient.removeLocationUpdates(callback);
+        }
+    }

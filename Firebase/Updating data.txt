@@ -1,0 +1,22 @@
+1) Create an instance of firestore.
+
+2)  		Map<String,Object> data=new HashMap<>();
+
+                 data.put(KEY,value);
+
+                 db.collection("collection_name").document("documnet_name")
+		.update(data).addOnSuccessListener(new OnSuccessListener<Void>() {
+                     @Override
+                     public void onSuccess(Void aVoid) {
+                         Toast.makeText(MainActivity.this,"Success",Toast.LENGTH_SHORT).show();
+
+                     }
+                 }).addOnFailureListener(new OnFailureListener() {
+                     @Override
+                     public void onFailure(@NonNull Exception e) {
+                         Toast.makeText(MainActivity.this,"Failed",Toast.LENGTH_SHORT).show();
+
+                     }
+                 });
+
+Here we update a particular key in the database.

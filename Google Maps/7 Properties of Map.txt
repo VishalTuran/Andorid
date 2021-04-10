@@ -1,0 +1,17 @@
+Camera Position is the total view shown by map at a time on screen.
+
+Target(What Camera Sees)-Defined by longitude and latitude, Center of map.
+
+Zoom-What camera sees.
+
+0 Very Far(Full World Map)
+
+21 Very close (Even streets are visible)
+
+Bearing-What direction camera is pointing. Specified in degrees clockwise in north.
+
+If you want camera to face west bearing will be 90 degress.
+
+Tilt:(How Much camera is tilted by)
+
+By default its 0 meaning camera is Facing direcing towards ground.

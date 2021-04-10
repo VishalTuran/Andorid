@@ -1,0 +1,50 @@
+Volley is an HTTP library that makes networking very easy and fast, for Android Apps.
+
+For using add the following dependencies in app level gradle.
+
+For using volley we need a api.
+
+Let's take a fake api for testing
+
+So the url for the fake api is:
+https://jsonplaceholder.typicode.com/todos/1
+
+We will get the data in the following format:
+
+{
+  "userId": 1,
+  "id": 1,
+  "title": "delectus aut autem",
+  "completed": false
+}
+
+Volley provides the following class for Json requests:
+-JsonArrayRequest: So this kind of request is made when the objects of Json are stored in an Array.
+
+[
+{
+  "userId": 1,
+  "id": 1,
+  "title": "delectus aut autem",
+  "completed": false
+},
+{
+  "userId": 2,
+  "id": 2,
+  "title": "delectus aut autem",
+  "completed": true
+}
+] 
+
+In this example both the object are stored in Array.
+
+-JsonObjectRequest: In this type there is only simple Json object like
+{
+  "userId": 1,
+  "id": 1,
+  "title": "delectus aut autem",
+  "completed": false
+}
+
+
+

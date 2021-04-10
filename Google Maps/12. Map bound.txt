@@ -1,0 +1,26 @@
+The area can be bounded by passing the top right and left bottom latitude and longitude.
+
+if(googleMap!=null)
+        {
+            double bottomBoundry=31.253840;
+            double leftBoundry= 75.703900;
+
+            double topBoundry=31.255996;
+            double rightBoundry= 75.705889;
+
+            LatLngBounds latLngBounds=new LatLngBounds(new LatLng(bottomBoundry,leftBoundry),new LatLng(topBoundry,rightBoundry));
+
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds,1));
+
+            MarkerOptions markerOptions=new MarkerOptions()
+                    .title("LPU")
+                    .position(latLngBounds.getCenter());
+            googleMap.addMarker(markerOptions);
+
+        }
+
+To restrict the user from moving out of specified area use:
+
+googleMap.setLatLngBoundsForCameraTarget(latLngBounds);
+
+inside the above method.

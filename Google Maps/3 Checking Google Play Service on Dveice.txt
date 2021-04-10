@@ -1,0 +1,25 @@
+Use the following code to check if there are google play services available on the device or not.
+
+	GoogleApiAvailability googleApi=GoogleApiAvailability.getInstance();
+
+        int result=googleApi.isGooglePlayServicesAvailable(this);
+
+
+ 	The result integer represent three scenories
+        // 1. Everything is working well
+        // 2. Something is wrong but user can fix it like updating google play services
+        // 3. Google Play Service are not there
+
+        if (result== ConnectionResult.SUCCESS)
+        {
+            return true;
+        }
+        else if(googleApi.isUserResolvableError(result))
+        {
+            Dialog dialog=googleApi.getErrorDialog(this,result,9002,task-> Toast.makeText(this, "Dialog is cancelled by user", Toast.LENGTH_SHORT).show());
+            dialog.show();
+        }
+        else
+        {
+            Toast.makeText(this, "Play Services are required by App", Toast.LENGTH_SHORT).show();
+        }

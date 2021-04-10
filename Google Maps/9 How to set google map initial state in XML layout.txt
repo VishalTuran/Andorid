@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SecondActivity">
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        map:cameraTargetLat="31.2551881"
+        map:cameraTargetLng="75.7028442"
+        map:cameraZoom="15"
+        map:uiRotateGestures="false"
+        map:uiTiltGestures="false"
+        map:uiZoomGestures="false"
+        map:uiScrollGestures="false"
+        map:mapType="satellite"
+        map:uiCompass="true"
+        android:id="@+id/maps_fragment"/>
+
+</LinearLayout>
+
+If all the gestures are turned false we can't do any operation on map.It will freeze on initial position.
+
+mapType="normal"
+mapType="hybrid"
+ are the other type of map.

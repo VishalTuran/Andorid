@@ -1,0 +1,12 @@
+xml:
+<EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter 1st Number"
+        android:id="@+id/first"
+        />
+
+Java:
+Textview first;
+first=findViewById(R.id.first);
+String value1=first.getText().toString();

@@ -1,0 +1,37 @@
+Firestore is a subset of Firebase-Real-Time Database
+
+Firestore is a NOSQL Cloud Database which is extremely,customizable,efficient and scalable.
+
+Unlike SQL,we don't need to specify the column name and entity before putting the data in the table rather in NOSQL we don't need to predefined the structure of the database. 
+
+In case of NOSQL, Database is called collection and Tables are called Documents.
+
+Documents allow us to add key-value pair which is basically the json format because json is easy to manipulate,query and very flexible.
+
+We can add documents inside the collection by specifing its name otherwise firebase we create an id for it.
+
+SetUp:
+
+1) Inside Android Studio,go to tools select Firebase.
+
+2) CLick on Log an Analytics event below the Analytics.
+
+3) You will be redirected to login with your google account.
+
+4) Log In into your account.
+
+5) Go back to Studio you will that the Connected will be written with checked sign.
+
+6) Now click on Add Analytics to your app.Now android studio will add the dependencies required for firebase.
+
+7) Now additionaly add the dependency for firebase firestore.
+
+8) Go to console of firebase website and click on your project.
+
+9) Navigate to Database 
+
+10)start the database in tested mode and click on finish.
+
+
+
+

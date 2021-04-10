@@ -1,0 +1,22 @@
+Geocoding is the process of converting address like Karnal into geographical coordinates which can be used to place marker on the maps.
+
+String location=editText.getText().toString();
+
+        Geocoder geocoder=new Geocoder(this, Locale.getDefault());
+
+        try {
+            List<Address> addressList=geocoder.getFromLocationName(location,1);
+            // 1 is the maximum results that the geocoder will return
+            if(addressList.size()>0)
+            {
+                Address address=addressList.get(0);
+
+                gotoLocation(address.getLatitude(),address.getLatitude());
+
+                googleMap.addMarker(new MarkerOptions().position(new LatLng(address.getLatitude(),address.getLongitude())));
+
+                Toast.makeText(this, "Address:"+address.getCountryName(), Toast.LENGTH_SHORT).show();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }

@@ -1,0 +1,38 @@
+Radio Buttons are usually used inside RadioGroup.The role of the RadioGroup is that when we select one radio button other radio button automatically get deselected.
+
+xml:
+<RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/radiogrp"
+        >
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Male"
+            android:id="@+id/male"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Female"
+            android:id="@+id/female"/>
+</RadioGroup>
+
+Here we are creating the radioButton with the help of radiogroup so that we can only select either male or female.
+
+Java code:
+int selectedId=radiogrp.getCheckedRadioButtonId();
+genderRadioButton=findViewById(selectedId);
+if(selectedId==-1)
+{
+           Toast.makeText(getApplicationContext(),"Nothing Selected",Toast.LENGTH_SHORT).show();
+}
+else
+{
+           Toast.makeText(getApplicationContext(),genderRadioButton.getText().toString(),Toast.LENGTH_SHORT).show();
+}
+
+getCheckedRadioButtonId returns us the id of the selected radiobutton.
+Later we can use the id to  fetch the radioButton which is selected and work on it.
+
+Also if the getCheckedRadioButtonId returns value -1.Then it means that no radio button is selected.

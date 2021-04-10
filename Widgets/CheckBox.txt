@@ -1,0 +1,49 @@
+xml:
+<CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Male"
+        android:id="@+id/male"/>
+
+<CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Female"
+        android:id="@+id/female"/>
+
+<Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Custom Toast"
+        android:id="@+id/btn"/>
+
+Java:
+btn1=findViewById(R.id.btn);
+        checkBox1=findViewById(R.id.male);
+        checkBox2=findViewById(R.id.female);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(checkBox1.isChecked() && checkBox2.isChecked())
+                {
+                    //checkBox2.setChecked(false);
+                    Toast.makeText(getApplicationContext(),"Checked:Both",Toast.LENGTH_SHORT).show();
+                }
+                else if(checkBox1.isChecked())
+                {
+                    //checkBox1.setChecked(false);
+                    Toast.makeText(getApplicationContext(),"Checked:Male",Toast.LENGTH_SHORT).show();
+                }
+                else if(checkBox2.isChecked())
+                {
+                    //checkBox1.setChecked(false);
+                    Toast.makeText(getApplicationContext(),"Checked:Female",Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(),"Checked:Male",Toast.LENGTH_SHORT).show();
+
+                }
+}
+        });

@@ -1,0 +1,27 @@
+We can create an object of the Google Map then later work on that googlemap.
+
+this object can later be initialised when the map is ready using onMapReady method which return GoogleMap Object once the map is ready.
+
+public class SecondActivity extends AppCompatActivity implements OnMapReadyCallback {
+    GoogleMap googleMap;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_second);
+
+        SupportMapFragment supportMapFragment= (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.maps_fragment);
+
+        supportMapFragment.getMapAsync(this);
+
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        Toast.makeText(this, "Map is Ready", Toast.LENGTH_SHORT).show();
+        this.googleMap=googleMap;
+        MarkerOptions markerOptions=new MarkerOptions()
+                .title("Title")
+                .position(new LatLng(0,0));
+        googleMap.addMarker(markerOptions);
+    }
+}

@@ -1,0 +1,55 @@
+1) Creating a JsonObjectRequest object.
+
+JsonObjectRequest request=new JsonObjectRequest();
+
+JsonObjectRequest take several  parameter   
+1)The first parameter specifies what kinda request we are making as in an HTTP there are several types of requests.
+
+For getting something from the api we will be using 'get'.
+
+2)Second parameter will actually be the url.
+
+3)Third Parameter is JsonRequest which we will put null.
+
+4)Fourth parameter is an interface Response.Listener to listen to the Response by using some methods.
+
+5)Fifth parameter is an another interface Response.ErrorListener to listen  to the error if the thing don't go as planned.
+
+
+It would look something like this:
+
+JsonObjectRequest request=new JsonObjectRequest(Request.Method.GET,
+                "https://jsonplaceholder.typicode.com/todos/1",
+                null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+JsonObject type response is the real Json data. 
+
+But we can't just ram into any API just like that we must follow some protocols.
+
+In Volley everything is put inside Queues so there must not be any kind of traffic jams. All the members inside of this queue they will know when and hwo to proceed when its time for them to proceed.
+
+So what are we doing is that first of all we will create an Queue to make sure that everything go as planned and the OS know when we need to fetch the data.
+
+private RequestQueue requestQueue;
+requestQueue=Volley.newRequestQueue(this);
+
+so now we have to add the JsonObjectRequest to the Queue.
+requestQueue.add(request);
+
+Paste the above line of code jsut below the main request code.
+
+Also paste the following line in Manifest to get the permissions.
+
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
+
